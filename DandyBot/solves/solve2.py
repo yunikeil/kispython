@@ -12,12 +12,32 @@ def script(check, x, y):
             return "up"
         elif not check("wall", x, y + 1):
             return "down"
-    elif check("level") in [3, 4]:
-        if check("level") == 4:
-            if x == 4 and y == 13:
-                return "right"
-            if x == 7 and 12 <= y <= 13:
+    elif check("level") == 3:
+        if check("wall", x - 1, y):
+            if not check("wall", x, y - 1):
                 return "up"
+        if check("wall", x + 1, y):
+            if not check("wall", x, y + 1):
+                return "down"
+        if check("wall", x, y - 1):
+            if not check("wall", x + 1, y):
+                return "right"
+        if check("wall", x, y + 1):
+            if not check("wall", x - 1, y):
+                return "left"
+        if check("wall", x - 1, y - 1):
+            return "up"
+        if check("wall", x + 1, y - 1):
+            return "right"
+        if check("wall", x + 1, y + 1):
+            return "down"
+        if check("wall", x - 1, y + 1):
+            return "left"
+    elif check("level") == 4:
+        if x == 4 and y == 13:
+            return "right"
+        if x == 7 and 12 <= y <= 13:
+            return "up"
         if check("wall", x - 1, y):
             if not check("wall", x, y - 1):
                 return "up"
