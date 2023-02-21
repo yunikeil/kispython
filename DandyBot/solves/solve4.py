@@ -1,5 +1,4 @@
 import random
-import random_bot
 
 class PathFindError(Exception):
     pass
