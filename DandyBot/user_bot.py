@@ -1,25 +1,89 @@
-﻿
-import msvcrt
-# Движения с клавиатуры
-def script(check, x, y):
-    if check("gold", x, y):
-        return "take"
-    z = msvcrt.getch()
-    if ord(z) == 119:
-        return("up")
-    elif ord(z) == 97:
-        return("left")
-    elif ord(z) == 115:
-        return("down")
-    elif ord(z) == 100:
-        return("right")
-    elif ord(z) == 116:
-        return("take")
-    else:
+﻿def script(check, x, y):
+    if check("level") == 1:
+        if check("gold", x, y):
+            return "take"
+        if check('gold', x+1, y):
+            return "right"
+        if check('gold', x, y-1):
+            return "up"
+        if check('gold', x, y+1):
+            return "down"
+        if  not check("wall", x + 2, y):
+            return "right"
         return "pass"
 
-    # w - 119
-    # a - 097
-    # s - 115
-    # d - 100
-    # t - 116
+    if check("level") == 2:
+        if check("gold", x, y):
+            return "take"
+        if check('gold', x+1, y):
+            return "right"
+        if check('gold', x, y-1):
+            return "up"
+        if check('gold', x, y+1):
+            return "down"
+        if not check("wall", x + 2, y):
+            return "right"
+        if not check("wall", x, y-2):
+            return "up"
+        return "pass"
+
+    if check("level") == 3:
+        if not (check("wall", x, y - 1)) and check("wall", x - 1, y):
+            if check("gold", x, y):
+                return "take"
+            return "up"
+        if not (check("wall", x + 1, y)) and check("wall", x, y - 1):
+            if check("gold", x, y):
+                return "take"
+            return "right"
+        if not (check("wall", x, y + 1)) and check("wall", x + 1, y):
+            if check("gold", x, y):
+                return "take"
+            return "down"
+        if not (check("wall", x - 1, y)) and check("wall", x, y + 1):
+            if check("gold", x, y):
+                return "take"
+            return "left"
+        if check("wall", x - 1, y - 1):
+            if check("gold", x, y):
+                return "take"
+            return "up"
+        if check("wall", x - 1, y + 1):
+            if check("gold", x, y):
+                return "take"
+            return "left"
+        if check("wall", x + 1, y - 1):
+            if check("gold", x, y):
+                return "take"
+            return "right"
+        if check("wall", x + 1, y + 1):
+            if check("gold", x, y):
+                return "take"
+            return "down"
+
+    if check("level") == 4:
+        if check("gold", x, y):
+            return "take"
+        if (x == 23 and y == 8):
+            return "left"
+        if (x == 22 and y == 9):
+            return "right"
+        if (x == 4 and y == 14):
+            return "right"
+        if not (check("wall", x, y - 1)) and check("wall", x - 1, y):
+            return "up"
+        if not (check("wall", x + 1, y)) and check("wall", x, y - 1):
+            return "right"
+        if not (check("wall", x, y + 1)) and check("wall", x + 1, y):
+            return "down"
+        if not (check("wall", x - 1, y)) and check("wall", x, y + 1):
+            return "left"
+        if check("wall", x - 1, y - 1):
+            return "up"
+        if check("wall", x - 1, y + 1):
+            return "left"
+        if check("wall", x + 1, y - 1):
+            return "right"
+        if check("wall", x + 1, y + 1):
+            return "down"
+        return "pass"
