@@ -9,12 +9,13 @@ file_path = os.path.join(dir_path, filename)
 
 data = []
 
-def 
+
 with open(file_path, "r", encoding="utf-8") as file:
-    data = file.read().replace("\n\n", "\n")
-    block_names = re.findall(r"(\#\#\s\[.*?\]\(\#+[0-9]*\))", data)
-    for line in data.split('\n'):
-        block_indexes
+    _data = file.read().replace("\n\n", "\n")
+    block_names = re.findall(r"(\#\#\s\[.*?\]\(\#+[0-9]*\))", _data)
+    for line in _data.split('\n'):
+        if line in block_names:
+            block_names.append(_data.index(line))
 
 
 
