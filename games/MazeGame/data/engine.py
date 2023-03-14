@@ -17,6 +17,8 @@ with open(file_path, "r", encoding="utf-8") as file:
         if line in block_names:
             block_names.append(_data.index(line))
 
+        
+
 
 
 
