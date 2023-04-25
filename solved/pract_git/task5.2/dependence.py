@@ -3,8 +3,6 @@ import ast
 import graphviz
 
 def build_module_tree(root_path):
-    # Рекурсивно обходим все каталоги, начиная с корневого каталога проекта,
-    # и ищем файлы с расширением .py
     module_paths = []
     for dir_path, _, file_names in os.walk(root_path):
         for file_name in file_names:
@@ -51,3 +49,6 @@ def build_module_tree(root_path):
 path = os.path.abspath(os.path.join(os.path.dirname(__file__), '.', 'project'))
 module_tree_source = build_module_tree(path)
 print(module_tree_source)
+
+
+https://dreampuf.github.io/GraphvizOnline
