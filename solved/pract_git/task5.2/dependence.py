@@ -2,6 +2,7 @@ import os
 import ast
 import graphviz
 
+
 def build_module_tree(root_path):
     module_paths = []
     for dir_path, _, file_names in os.walk(root_path):
@@ -45,10 +46,11 @@ def build_module_tree(root_path):
 
     return module_tree.source
 
+
 # Пример вызова функции build_module_tree
 path = os.path.abspath(os.path.join(os.path.dirname(__file__), '.', 'project'))
 module_tree_source = build_module_tree(path)
 print(module_tree_source)
 
 
-https://dreampuf.github.io/GraphvizOnline
+#https://dreampuf.github.io/GraphvizOnline
