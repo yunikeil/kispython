@@ -51,7 +51,7 @@ def build_module_tree(root_path):
 # Пример вызова функции build_module_tree
 path = os.path.abspath(os.path.join(os.path.dirname(__file__), '.', 'project'))
 module_tree_source = build_module_tree(path)
-#print(module_tree_source)
+print(module_tree_source)
 
 
 #https://dreampuf.github.io/GraphvizOnline

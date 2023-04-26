@@ -11,8 +11,7 @@ def build_module_tree(root_path):
                 module_path = os.path.join(dir_path, file_name)
                 module_paths.append(module_path)
 
-    # Строим иерархическое дерево модулей, где корневой узел - это main.py,
-    # а потомками являются все модули, которые импортируются в main.py
+    # дерево модулей с корнем - main.py,
     module_tree = graphviz.Digraph()
     module_tree.node('main', 'main.py')
     for module_path in module_paths:
@@ -47,7 +46,6 @@ def build_module_tree(root_path):
     return module_tree.source
 
 
-# Пример вызова функции build_module_tree
 path = os.path.abspath(os.path.join(os.path.dirname(__file__), '.', 'project'))
 module_tree_source = build_module_tree(path)
 print(module_tree_source)
